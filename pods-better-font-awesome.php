@@ -16,10 +16,10 @@
  * License:           GPLv2+
  * Text Domain:       pbfa
  * Domain Path:       /languages
- * GitHub Plugin URI: https://github.com/MickeyKay/better-font-awesome
+ * GitHub Plugin URI: https://github.com/mgratch/pods-better-font-awesome/
  */
 
-add_action( 'plugins_loaded', 'lwi_pods_load_bfa', 1 );
+add_action( 'plugins_loaded', 'lwi_pods_load_bfa',10 );
 /** 
  * Initialize the Better Font Awesome Library.
  */
@@ -32,7 +32,7 @@ function lwi_pods_load_bfa() {
     $args = array(
             'version' => 'latest',
             'minified' => true,
-            'remove_existing_fa' => false,
+            'remove_existing_fa'      => true,
             'load_styles'             => true,
             'load_admin_styles'       => true,
             'load_shortcode'          => true,
@@ -40,15 +40,45 @@ function lwi_pods_load_bfa() {
     );
 
     // Initialize the Better Font Awesome Library.
-    $bfa_new = Better_Font_Awesome_Library::get_instance( $args );
-    var_dump($bfa_new->get_stylesheet_url());
+    // Initialize the library with custom args.
+    Better_Font_Awesome_Library::get_instance( $args );
+
+    // Get the active Better Font Awesome Library Object.
+    $my_bfa = Better_Font_Awesome_Library::get_instance($args);
+
+    // Get info on the Better Font Awesome Library object.
+    $version = $my_bfa->get_version();
+    $stylesheet_url = $my_bfa->get_stylesheet_url();
+    $prefix = $my_bfa->get_prefix();
+    $icons = $my_bfa->get_icons();
+
+    //Dump BFA Library Object - This Works
+    var_dump(Better_Font_Awesome_Library::get_instance( $args ));
+
+    //Break
+    echo '<br><hr><br>';
+
+    //Dump BFA Library Object - This Works
+    var_dump($my_bfa);
+
+    //Break
+    echo '<br><hr><br>';
+    
+    //Dump specific info from the Better Font Awesome Library Object - This Doesn't Work
+    var_dump($stylesheet_url);
+    
+    // Output all available icons. - This Doesn't Work
+    foreach ( $icons as $icon ) {
+        echo $icon . '<br />';
+    }
+
+
+
 }
 
 if (!is_admin()):
-    function get_icon_list() {
-        //var_dump($bfa_new);
-    }
-
+    //global $bfa_new;
+    //var_dump($bfa_new);
     //print_r(get_icon_list()->$bfa_new);
 endif;
 ?>
