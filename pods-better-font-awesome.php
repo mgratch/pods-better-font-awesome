@@ -30,13 +30,13 @@ function lwi_pods_load_bfa() {
 
     // Set the library initialization args (defaults shown).
     $args = array(
-            'version' => 'latest',
-            'minified' => true,
+            'version'                 => 'latest',
+            'minified'                => true,
             'remove_existing_fa'      => true,
             'load_styles'             => true,
             'load_admin_styles'       => true,
             'load_shortcode'          => true,
-            'load_tinymce_plugin'     => true,
+            'load_tinymce_plugin'     => true
     );
 
     // Initialize the Better Font Awesome Library.
@@ -77,8 +77,7 @@ function lwi_pods_load_bfa() {
 }
 
 if (!is_admin()):
-    //global $bfa_new;
-    //var_dump($bfa_new);
-    //print_r(get_icon_list()->$bfa_new);
+    //do something
 endif;
+
 ?>
