@@ -18,19 +18,25 @@
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/mgratch/pods-better-font-awesome/
  */
-require_once ( dirname( __FILE__ ) . '/better-font-awesome-library/better-font-awesome-library.php' );
-// Initialize the library with custom args.
-//Better_Font_Awesome_Library::get_instance();
-class testClass extends Better_Font_Awesome_Library {
-    
-}
-// Get the active Better Font Awesome Library Object.
-$my_bfa = testClass::get_instance();
 
-// Get info on the Better Font Awesome Library object.
-var_dump($my_bfa->get_version());
-var_dump($my_bfa->get_stylesheet_url());
-var_dump($my_bfa->get_prefix());
-var_dump($my_bfa->get_icons());
+add_action( 'plugins_loaded', 'lwi_pods_load_bfa', 4 );
+/** 
+ * Initialize the Better Font Awesome Library.
+ */
+function lwi_pods_load_bfa() {
+
+    // Include the main library file. Make sure to modify the path to match your directory structure.
+    require_once ( dirname( __FILE__ ) . '/better-font-awesome-library/better-font-awesome-library.php' );
+
+    // Initialize the Better Font Awesome Library.
+        $my_bfa = Better_Font_Awesome_Library::get_instance();
+        $my_bfa->load();
+        $icons = $my_bfa->get_icons();
+        echo '<span style="position:absolute;top:middle;left:50%;"><select name="icon" id="iconList">';
+        foreach ($icons as $icon){
+            echo "<option value='icon-{$icon}'><i class='fa-{$icon}'></i></option>";
+        }
+        echo '</select></span>';
+}
 
 ?>
