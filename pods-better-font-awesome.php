@@ -18,13 +18,14 @@
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/mgratch/pods-better-font-awesome/
  */
-
 require_once ( dirname( __FILE__ ) . '/better-font-awesome-library/better-font-awesome-library.php' );
 // Initialize the library with custom args.
-Better_Font_Awesome_Library::get_instance();
-
+//Better_Font_Awesome_Library::get_instance();
+class testClass extends Better_Font_Awesome_Library {
+    
+}
 // Get the active Better Font Awesome Library Object.
-$my_bfa = Better_Font_Awesome_Library::get_instance();
+$my_bfa = testClass::get_instance();
 
 // Get info on the Better Font Awesome Library object.
 var_dump($my_bfa->get_version());
