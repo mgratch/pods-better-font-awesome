@@ -19,22 +19,24 @@
  * GitHub Plugin URI: https://github.com/mgratch/pods-better-font-awesome/
  */
 
-add_action( 'plugins_loaded', 'lwi_pods_load_bfa', 4 );
+
+//add_action( 'plugins_loaded', 'lwi_pods_load_bfa', 6 );
 /** 
  * Initialize the Better Font Awesome Library.
  */
 function lwi_pods_load_bfa() {
 
     // Include the main library file. Make sure to modify the path to match your directory structure.
-    require_once ( dirname( __FILE__ ) . '/better-font-awesome-library/better-font-awesome-library.php' );
+    //require_once ( dirname( __FILE__ ) . '/better-font-awesome-library/better-font-awesome-library.php' );
 
     // Initialize the Better Font Awesome Library.
         $my_bfa = Better_Font_Awesome_Library::get_instance();
-        $my_bfa->load();
         $icons = $my_bfa->get_icons();
-        echo '<span style="position:absolute;top:middle;left:50%;"><select name="icon" id="iconList">';
-        foreach ($icons as $icon){
-            echo "<option value='icon-{$icon}'><i class='fa-{$icon}'></i></option>";
+        //var_dump($my_bfa);
+        echo '<span style="position:absolute;top:middle;left:50%;"><select style="font-family: FontAwesome, Helvetica;">';
+        foreach ($icons as $hex_code => $icon){
+            $hex_code = strstr($hex_code, 'f',FALSE);
+            echo "<option value='icon-{$icon}'>&#x{$hex_code}; {$icon}</option>";
         }
         echo '</select></span>';
 }
