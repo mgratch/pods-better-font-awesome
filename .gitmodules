@@ -1,0 +1,3 @@
+[submodule "better-font-awesome-library"]
+	path = better-font-awesome-library
+	url = https://github.com/MickeyKay/better-font-awesome-library.git
