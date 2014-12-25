@@ -13,4 +13,4 @@ Special thanks to the following folks and their plugins for inspiration and supp
 
 And many thanks to the following folks who helped with so very much:
 * [Josh Pollock](http://joshpress.net/ "Josh Pollock")
-* [Mickey Kay] (http://www.mightyminnow.com/ "Mighty Minnow")
+* [Mickey Kay] (http://www.mightyminnow.cocd m/ "Mighty Minnow")
